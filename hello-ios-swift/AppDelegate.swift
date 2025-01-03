@@ -1,7 +1,7 @@
 import UIKit
 import LaunchDarkly
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else { return }
 
         let config = LDConfig(mobileKey: sdkKey, autoEnvAttributes: .enabled)
-        LDClient.start(config: config, context: context, startWaitSeconds: 30)
+        LDClient.start(config: config, context: context, startWaitSeconds: 30) { timedOut in
+            print("result")
+        }
     }
 }
